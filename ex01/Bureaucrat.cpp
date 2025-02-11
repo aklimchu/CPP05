@@ -1,20 +1,20 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 //--------------------------------Constructors--------------------------------//
 
 Bureaucrat::Bureaucrat() : name(""), grade(150) {
-	std::cout << "Default constructor Bureaucrat called" << std::endl << std::endl;
-	validateGrade(grade);
+	//std::cout << "Default constructor Bureaucrat called" << std::endl << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : name(name) {
-	std::cout << "Parametric constructor Bureaucrat called" << std::endl << std::endl;
+	//std::cout << "Parametric constructor Bureaucrat called" << std::endl << std::endl;
 	validateGrade(grade);
 	this->grade = grade;
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const & src) : name(src.name) {
-	std::cout << "Copy constructor Bureaucrat called" << std::endl << std::endl;
+	//std::cout << "Copy constructor Bureaucrat called" << std::endl << std::endl;
 	validateGrade(grade);
 	this->grade = src.grade;
 }
@@ -22,7 +22,7 @@ Bureaucrat::Bureaucrat(Bureaucrat const & src) : name(src.name) {
 //---------------------------------Destructor---------------------------------//
 
 Bureaucrat::~Bureaucrat() {
-	std::cout << "Destructor Bureaucrat called" << std::endl << std::endl;
+	//std::cout << "Destructor Bureaucrat called" << std::endl << std::endl;
 }
 
 //-------------------------------Member functions------------------------------//
@@ -50,6 +50,22 @@ void Bureaucrat::validateGrade(int grade) const {
 		throw Bureaucrat::GradeTooHighException();
 	else if (grade > 150)
 		throw Bureaucrat::GradeTooLowException();
+}
+
+void Bureaucrat::signForm(Form & formToSign) {
+	try {
+		formToSign.beSigned(*this);
+		std::cout << this->getName() << " signed " << formToSign.getName() \
+			<< std::endl << std::endl; // will this work?
+	}
+	catch (const Form::FormAlreadySignedException & e) {
+		std::cout << this->getName() << " couldn’t sign " << formToSign.getName() << \
+			" because the form has been signed already before." << std::endl << std::endl;
+	}
+	catch (const Form::GradeTooLowException & e) {
+		std::cout << this->getName() << " couldn’t sign " << formToSign.getName() << \
+			" because employee's grade is too low." << std::endl << std::endl;
+	}
 }
 
 std::ostream & operator<<(std::ostream & o, Bureaucrat const & rhs) {
