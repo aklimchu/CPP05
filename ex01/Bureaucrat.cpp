@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/12 09:11:38 by aklimchu          #+#    #+#             */
+/*   Updated: 2025/02/12 09:23:43 by aklimchu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
@@ -56,7 +68,7 @@ void Bureaucrat::signForm(Form & formToSign) {
 	try {
 		formToSign.beSigned(*this);
 		std::cout << this->getName() << " signed " << formToSign.getName() \
-			<< std::endl << std::endl; // will this work?
+			<< std::endl << std::endl;
 	}
 	catch (const Form::FormAlreadySignedException & e) {
 		std::cout << this->getName() << " couldn’t sign " << formToSign.getName() << \

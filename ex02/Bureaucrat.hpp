@@ -5,17 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/12 09:11:41 by aklimchu          #+#    #+#             */
-/*   Updated: 2025/02/12 09:11:42 by aklimchu         ###   ########.fr       */
+/*   Created: 2025/02/12 09:11:59 by aklimchu          #+#    #+#             */
+/*   Updated: 2025/02/12 09:14:46 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
-#include "Form.hpp"
+#include "AForm.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat {
 	public:
@@ -30,7 +30,7 @@ class Bureaucrat {
 		int getGrade(void) const;
 		void incrementGrade(void);
 		void decrementGrade(void);
-		void signForm(Form & formToSign);
+		void signAForm(AForm & AFormToSign);
 
 		class GradeTooHighException : public std::exception {
 			public:

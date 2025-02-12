@@ -5,28 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/12 09:11:10 by aklimchu          #+#    #+#             */
-/*   Updated: 2025/02/12 09:11:11 by aklimchu         ###   ########.fr       */
+/*   Created: 2025/02/12 09:11:55 by aklimchu          #+#    #+#             */
+/*   Updated: 2025/02/12 09:23:28 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "AForm.hpp"
 
 //--------------------------------Constructors--------------------------------//
 
 Bureaucrat::Bureaucrat() : name(""), grade(150) {
-	std::cout << "Default constructor Bureaucrat called" << std::endl << std::endl;
-	validateGrade(grade);
+	//std::cout << "Default constructor Bureaucrat called" << std::endl << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : name(name) {
-	std::cout << "Parametric constructor Bureaucrat called" << std::endl << std::endl;
+	//std::cout << "Parametric constructor Bureaucrat called" << std::endl << std::endl;
 	validateGrade(grade);
 	this->grade = grade;
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const & src) : name(src.name) {
-	std::cout << "Copy constructor Bureaucrat called" << std::endl << std::endl;
+	//std::cout << "Copy constructor Bureaucrat called" << std::endl << std::endl;
 	validateGrade(grade);
 	this->grade = src.grade;
 }
@@ -34,7 +34,7 @@ Bureaucrat::Bureaucrat(Bureaucrat const & src) : name(src.name) {
 //---------------------------------Destructor---------------------------------//
 
 Bureaucrat::~Bureaucrat() {
-	std::cout << "Destructor Bureaucrat called" << std::endl << std::endl;
+	//std::cout << "Destructor Bureaucrat called" << std::endl << std::endl;
 }
 
 //-------------------------------Member functions------------------------------//
@@ -62,6 +62,22 @@ void Bureaucrat::validateGrade(int grade) const {
 		throw Bureaucrat::GradeTooHighException();
 	else if (grade > 150)
 		throw Bureaucrat::GradeTooLowException();
+}
+
+void Bureaucrat::signAForm(AForm & AFormToSign) {
+	try {
+		AFormToSign.beSigned(*this);
+		std::cout << this->getName() << " signed " << AFormToSign.getName() \
+			<< std::endl << std::endl;
+	}
+	catch (const AForm::AFormAlreadySignedException & e) {
+		std::cout << this->getName() << " couldn’t sign " << AFormToSign.getName() << \
+			" because the AForm has been signed already before." << std::endl << std::endl;
+	}
+	catch (const AForm::GradeTooLowException & e) {
+		std::cout << this->getName() << " couldn’t sign " << AFormToSign.getName() << \
+			" because employee's grade is too low." << std::endl << std::endl;
+	}
 }
 
 std::ostream & operator<<(std::ostream & o, Bureaucrat const & rhs) {
