@@ -6,11 +6,14 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 09:12:10 by aklimchu          #+#    #+#             */
-/*   Updated: 2025/02/12 09:14:46 by aklimchu         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:22:26 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int	main() {
 	
@@ -122,10 +125,10 @@ int	main() {
 	std::cout << "//----------------Let's create some AForms and test them--------------//" \
 		<< std::endl << std::endl;
 
-	AForm* ConstructionPermit = nullptr;
+	PresidentialPardonForm* PresidentialPardon = nullptr;
 
 	try {
-		ConstructionPermit = new AForm ("Construction Permit", 200, 150);
+		PresidentialPardon = new PresidentialPardonForm ("Construction Permit", 200, 150);
 	}
 	catch (AForm::GradeTooHighException& e) {
 		std::cerr << e.what() << '\n';

@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 09:12:07 by aklimchu          #+#    #+#             */
-/*   Updated: 2025/02/12 09:56:32 by aklimchu         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:24:57 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,16 @@ class AForm {
 					return ("AForm has been signed already before");
 				}
 		};
+
+		class FormNotSigned : public std::exception {
+			public:
+				virtual const char* what() const throw() {
+					return ("AForm has not been signed yet");
+				}
+		};
+
+		void execute(Bureaucrat const & executor) const;
+		
 
 	private:
 		std::string const name;

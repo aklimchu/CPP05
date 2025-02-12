@@ -11,4 +11,7 @@ class PresidentialPardonForm : public AForm {
 		~PresidentialPardonForm(void) = default; // Canonical
 
 		PresidentialPardonForm & operator=(PresidentialPardonForm const & rhs) = default; // Canonical
+
+		void pardonedByZaphod(void) const;
+		//void execute(Bureaucrat const & executor) const;
 };

@@ -17,7 +17,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : \
 
 //-------------------------------Member functions------------------------------//
 
-void ShrubberyCreationForm::createFile(void) {
+void ShrubberyCreationForm::createFile(void) const {
 	std::ofstream output_stream;
 
 	std::string new_file = this->getTarget() + "_shrubbery";
@@ -40,3 +40,13 @@ void ShrubberyCreationForm::createFile(void) {
 
 	output_stream.close();
 }
+
+/* void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
+	if (executor.getGrade() > this->getGradeToExecute())
+		throw ShrubberyCreationForm::GradeTooLowException();
+	if (executor.getGrade() < this->getGradeToExecute())
+		throw ShrubberyCreationForm::GradeTooHighException();
+	if (this->getSignedStatus() == false)
+		throw ShrubberyCreationForm::FormNotSigned();
+	this->createFile();
+} */

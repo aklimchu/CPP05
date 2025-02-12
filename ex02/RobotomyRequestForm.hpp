@@ -11,4 +11,7 @@ class RobotomyRequestForm : public AForm {
 		~RobotomyRequestForm(void) = default; // Canonical
 
 		RobotomyRequestForm & operator=(RobotomyRequestForm const & rhs) = default; // Canonical
+
+		void makeNoise(void) const;
+		//void execute(Bureaucrat const & executor) const;
 };

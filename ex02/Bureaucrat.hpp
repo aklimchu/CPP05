@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 09:11:59 by aklimchu          #+#    #+#             */
-/*   Updated: 2025/02/12 09:14:46 by aklimchu         ###   ########.fr       */
+/*   Updated: 2025/02/12 11:42:34 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ class Bureaucrat {
 					return ("Bureaucrat can't have grade lower then 150");
 				}
 		};
+		void executeForm(AForm const & form);
 
 	private:
 		const std::string name;

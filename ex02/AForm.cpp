@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 09:12:02 by aklimchu          #+#    #+#             */
-/*   Updated: 2025/02/12 09:56:56 by aklimchu         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:16:25 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,19 @@ void AForm::beSigned(Bureaucrat & employee) {
 	if (this->signedStatus == true)
 		throw AForm::AFormAlreadySignedException();
 	this->signedStatus = true;
+}
+
+void AForm::execute(Bureaucrat const & executor) const {
+	if (executor.getGrade() > this->getGradeToExecute())
+		throw AForm::GradeTooLowException();
+	if (this->getSignedStatus() == false)
+		throw AForm::FormNotSigned();
+	if (this->getName() == "PresidentialPardonForm")
+		this->pardonedByZaphod();
+	else if (this->getName() == "RobotomyRequestForm")
+		this->makeNoise();
+	else if (this->getName() == "ShrubberyCreationForm")
+		this->createFile();
 }
 
 std::ostream & operator<<(std::ostream & o, AForm const & rhs) {

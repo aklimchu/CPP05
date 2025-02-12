@@ -14,5 +14,6 @@ class ShrubberyCreationForm : public AForm {
 
 		ShrubberyCreationForm & operator=(ShrubberyCreationForm const & rhs) = default; // Canonical
 
-		void createFile(void);
+		void createFile(void) const;
+		//void execute(Bureaucrat const & executor) const;
 };

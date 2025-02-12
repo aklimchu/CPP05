@@ -16,3 +16,11 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target) : \
 //-------------------------Copy assignment operator---------------------------//
 
 //-------------------------------Member functions------------------------------//
+
+void RobotomyRequestForm::makeNoise(void) const {
+	std::cout << "Drrrrrrrrrrrrrrrrrrr" << std::endl;
+	if (std::rand() % 2)
+		std::cout << this->getTarget() << " has been robotomized successfully" << "\n\n";
+	else
+		std::cout << "Robotomy of " << this->getTarget() << " failed" << "\n\n";
+}
