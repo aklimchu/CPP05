@@ -6,7 +6,7 @@
 #    By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/06 09:06:17 by aklimchu          #+#    #+#              #
-#    Updated: 2025/02/12 09:14:46 by aklimchu         ###   ########.fr        #
+#    Updated: 2025/02/13 08:57:48 by aklimchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ CYAN = \033[0;96m
 WHITE = \033[0;97m
 
 # Program name
-NAME		= more_AForms
+NAME		= more_forms
 
 # Compiler
 C++ 		= c++
@@ -33,6 +33,9 @@ RMDIR		= rm -rf
 # Source / OBJ files / Includes
 SRC 		=	Bureaucrat.cpp \
 				AForm.cpp \
+				ShrubberyCreationForm.cpp \
+				RobotomyRequestForm.cpp \
+				PresidentialPardonForm.cpp \
 				main.cpp
 OBJ 		= $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR		= obj
@@ -51,14 +54,14 @@ $(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
 
 $(NAME):	$(OBJ_DIR) $(OBJ)
 	@$(C++) $(CFLAGS) $(OBJ) $(INCLUDE) -o $(NAME)
-	@echo "$(GREEN)SUCCESS, MORE_AFormS IS READY $(DEF_COLOR)"
+	@echo "$(GREEN)SUCCESS, MORE_FORMS IS READY $(DEF_COLOR)"
 
 clean:
 	@echo "$(RED)Deleting object files... $(DEF_COLOR)"
 	@$(RMDIR) $(OBJ_DIR) 
 
 fclean:		clean
-	@echo "$(GREEN)Deleting more_AForms... $(DEF_COLOR)"
+	@echo "$(GREEN)Deleting more_forms... $(DEF_COLOR)"
 	@$(RMDIR) $(NAME)
 	@echo "$(GREEN)CLEAR $(DEF_COLOR)"
 

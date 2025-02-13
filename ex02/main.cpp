@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 09:12:10 by aklimchu          #+#    #+#             */
-/*   Updated: 2025/02/12 14:22:26 by aklimchu         ###   ########.fr       */
+/*   Updated: 2025/02/13 08:59:42 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,47 +118,8 @@ int	main() {
 		std::cout << "Couldn't decrement the grade" << std::endl << std::endl;
 	}
 	
-	std::cout << *James << std::endl << std::endl;
-
-	//---------------Testing the AForm member functions-------------//
-
-	std::cout << "//----------------Let's create some AForms and test them--------------//" \
-		<< std::endl << std::endl;
-
-	PresidentialPardonForm* PresidentialPardon = nullptr;
-
-	try {
-		PresidentialPardon = new PresidentialPardonForm ("Construction Permit", 200, 150);
-	}
-	catch (AForm::GradeTooHighException& e) {
-		std::cerr << e.what() << '\n';
-		std::cout << "Couldn't create the AForm" << std::endl << std::endl;
-	}
-	catch (AForm::GradeTooLowException& e) {
-		std::cerr << e.what() << '\n';
-		std::cout << "Couldn't create the AForm" << std::endl << std::endl;
-	}
-
-	AForm* SitePermit = nullptr;
-
-	try {
-		SitePermit = new AForm ("Site Permit", 2, 100);
-	}
-	catch (AForm::GradeTooHighException& e) {
-		std::cerr << e.what() << '\n';
-		std::cout << "Couldn't create the AForm" << std::endl << std::endl;
-	}
-	catch (AForm::GradeTooLowException& e) {
-		std::cerr << e.what() << '\n';
-		std::cout << "Couldn't create the AForm" << std::endl << std::endl;
-	}
-
-	std::cout << *James << std::endl;
-	std::cout << *SitePermit << std::endl;
-	James->signAForm(*SitePermit);
-
 	Bureaucrat* Jordan = nullptr;
-
+	
 	try {
 		Jordan = new Bureaucrat ("Jordan", 1);
 	}
@@ -171,13 +132,35 @@ int	main() {
 		std::cout << "Couldn't create the bureaucrat" << std::endl << std::endl;
 	}
 
-	std::cout << *Jordan << std::endl;
-	std::cout << *SitePermit << std::endl;
-	Jordan->signAForm(*SitePermit);
+	std::cout << *James << std::endl << std::endl;
+
+	//---------------Testing the AForm member functions-------------//
+
+	std::cout << "//----------------Let's create some AForms and test them--------------//" \
+		<< std::endl << std::endl;
+
+	PresidentialPardonForm* PresidentialPardon = new PresidentialPardonForm("Sir Monterrey");
+	RobotomyRequestForm* RobotomyRequest = new RobotomyRequestForm("Mr McKinsey");
+	RobotomyRequestForm* RobotomyRequest2 = new RobotomyRequestForm("Mr McMuffin");
+	ShrubberyCreationForm* ShrubberyCreation = new ShrubberyCreationForm("mynewfile");
+
+	std::cout << *James << std::endl << std::endl;
+	std::cout << *Jordan << std::endl << std::endl;
 	
-	std::cout << *Jordan << std::endl;
-	std::cout << *SitePermit << std::endl;
-	Jordan->signAForm(*SitePermit);
+	James->signAForm(*PresidentialPardon);
+	James->executeForm(*PresidentialPardon);
+	Jordan->signAForm(*PresidentialPardon);
+	Jordan->executeForm(*PresidentialPardon);
+	
+	Jordan->executeForm(*RobotomyRequest);
+	Jordan->signAForm(*RobotomyRequest);
+	Jordan->executeForm(*RobotomyRequest);
+	
+	Jordan->signAForm(*RobotomyRequest2);
+	Jordan->executeForm(*RobotomyRequest2);
+
+	Jordan->signAForm(*ShrubberyCreation);
+	Jordan->executeForm(*ShrubberyCreation);
 
 	//------------------------Freeing the memory--------------------//
 
@@ -187,8 +170,8 @@ int	main() {
 		delete James;
 	if (Jordan)
 		delete Jordan;
-	if (ConstructionPermit)
-		delete ConstructionPermit;
-	if (SitePermit)
-		delete SitePermit;
+	delete PresidentialPardon;
+	delete RobotomyRequest;
+	delete RobotomyRequest2;
+	delete ShrubberyCreation;
 }

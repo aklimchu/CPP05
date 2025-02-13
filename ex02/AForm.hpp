@@ -6,7 +6,7 @@
 /*   By: aklimchu <aklimchu@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 09:12:07 by aklimchu          #+#    #+#             */
-/*   Updated: 2025/02/12 14:24:57 by aklimchu         ###   ########.fr       */
+/*   Updated: 2025/02/13 08:44:00 by aklimchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,21 @@
 class Bureaucrat;
 
 class AForm {
+	private:
+		std::string const name;
+		std::string const target;
+		bool signedStatus;
+		int const gradeToSign;
+		int const gradeToExecute;
+	
+	protected:
+		void validateGrade(int grade) const;
+		
 	public:
 		AForm(void); // Canonical
 		AForm(std::string name, std::string target, int gradeToSign, int gradeToExecute);
 		AForm(AForm const & src); // Canonical
-		~AForm(void); // Canonical
+		virtual ~AForm(void); // Canonical
 
 		AForm & operator=(AForm const & rhs) = delete; // Canonical
 
@@ -33,7 +43,11 @@ class AForm {
 		bool getSignedStatus(void) const;
 		
 		void beSigned(Bureaucrat & employee);
-		virtual void execute(Bureaucrat const & executor) const = 0;
+		void execute(Bureaucrat const & executor) const;
+		
+		virtual void pardonedByZaphod(void) const = 0;
+		virtual void makeNoise(void) const = 0;
+		virtual void createFile(void) const = 0;
 
 		class GradeTooHighException : public std::exception {
 			public:
@@ -62,19 +76,6 @@ class AForm {
 					return ("AForm has not been signed yet");
 				}
 		};
-
-		void execute(Bureaucrat const & executor) const;
-		
-
-	private:
-		std::string const name;
-		std::string const target;
-		bool signedStatus;
-		int const gradeToSign;
-		int const gradeToExecute;
-	
-	protected:
-		void validateGrade(int grade) const;
 };
 
 std::ostream & operator<<(std::ostream & o, AForm const & rhs);

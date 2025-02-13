@@ -11,9 +11,9 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : \
 	//std::cout << "Parametric constructor ShrubberyCreationForm called" << std::endl << std::endl;
 }
 
-//---------------------------------Destructor---------------------------------//
-
-//-------------------------Copy assignment operator---------------------------//
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const & src): AForm(src) {
+	//std::cout << "Copy constructor AForm called" << std::endl << std::endl;
+}
 
 //-------------------------------Member functions------------------------------//
 
@@ -41,12 +41,6 @@ void ShrubberyCreationForm::createFile(void) const {
 	output_stream.close();
 }
 
-/* void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
-	if (executor.getGrade() > this->getGradeToExecute())
-		throw ShrubberyCreationForm::GradeTooLowException();
-	if (executor.getGrade() < this->getGradeToExecute())
-		throw ShrubberyCreationForm::GradeTooHighException();
-	if (this->getSignedStatus() == false)
-		throw ShrubberyCreationForm::FormNotSigned();
-	this->createFile();
-} */
+void ShrubberyCreationForm::makeNoise(void) const { }
+
+void ShrubberyCreationForm::pardonedByZaphod(void) const { }

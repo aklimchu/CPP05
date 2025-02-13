@@ -11,9 +11,9 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target) : \
 	//std::cout << "Parametric constructor RobotomyRequestForm called" << std::endl << std::endl;
 }
 
-//---------------------------------Destructor---------------------------------//
-
-//-------------------------Copy assignment operator---------------------------//
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const & src): AForm(src) {
+	//std::cout << "Copy constructor AForm called" << std::endl << std::endl;
+}
 
 //-------------------------------Member functions------------------------------//
 
@@ -24,3 +24,7 @@ void RobotomyRequestForm::makeNoise(void) const {
 	else
 		std::cout << "Robotomy of " << this->getTarget() << " failed" << "\n\n";
 }
+
+void RobotomyRequestForm::pardonedByZaphod(void) const { }
+
+void RobotomyRequestForm::createFile(void) const { }

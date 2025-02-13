@@ -11,9 +11,9 @@ PresidentialPardonForm::PresidentialPardonForm(std::string target) : \
 	//std::cout << "Parametric constructor PresidentialPardonForm called" << std::endl << std::endl;
 }
 
-//---------------------------------Destructor---------------------------------//
-
-//-------------------------Copy assignment operator---------------------------//
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const & src): AForm(src) {
+	//std::cout << "Copy constructor AForm called" << std::endl << std::endl;
+}
 
 //-------------------------------Member functions------------------------------//
 
@@ -21,12 +21,6 @@ void PresidentialPardonForm::pardonedByZaphod(void) const {
 	std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox" << std::endl << std::endl;
 }
 
-/* void PresidentialPardonForm::execute(Bureaucrat const & executor) const {
-	if (executor.getGrade() > this->getGradeToExecute())
-		throw PresidentialPardonForm::GradeTooLowException();
-	if (executor.getGrade() < this->getGradeToExecute())
-		throw PresidentialPardonForm::GradeTooHighException();
-	if (this->getSignedStatus() == false)
-		throw PresidentialPardonForm::FormNotSigned();
-	this->pardonedByZaphod();
-} */
+void PresidentialPardonForm::makeNoise(void) const { }
+
+void PresidentialPardonForm::createFile(void) const { }

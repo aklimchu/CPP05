@@ -9,11 +9,12 @@ class ShrubberyCreationForm : public AForm {
 	public:
 		ShrubberyCreationForm(void); // Canonical
 		ShrubberyCreationForm(std::string target);
-		ShrubberyCreationForm(ShrubberyCreationForm const & src) = delete; // Canonical
+		ShrubberyCreationForm(ShrubberyCreationForm const & src); // Canonical
 		~ShrubberyCreationForm(void) = default; // Canonical
 
-		ShrubberyCreationForm & operator=(ShrubberyCreationForm const & rhs) = default; // Canonical
+		ShrubberyCreationForm & operator=(ShrubberyCreationForm const & rhs) = delete; // Canonical
 
 		void createFile(void) const;
-		//void execute(Bureaucrat const & executor) const;
+		void makeNoise(void) const;
+		void pardonedByZaphod(void) const;
 };
