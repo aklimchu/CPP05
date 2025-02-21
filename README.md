@@ -3,14 +3,16 @@
 ---
 
 ## 📌 Introduction 
-This project is the seventh module of the C++ Piscine at 42. It focuses on C++ type conversion, covering topics like implicit and explicit conversions, reinterpretation of data types, and static, dynamic, and const casts.
+This project is the sixth module of the C++ Piscine at 42. It introduces exception handling in C++,
+exploring how to write robust and fault-tolerant programs using try-catch blocks and custom exceptions.
+
 ---
 
 ## 📚 Topics Covered
-- Implicit and Explicit Type Conversions
-- Static, Dynamic, Reinterpret, and Const Casts
-- Handling Different Data Types
-- Best Practices for Type Safety
+- Exception Handling (try, catch, throw)
+- Standard Exceptions in C++
+- Creating and Handling Custom Exceptions
+- Proper Error Management
 
 ---
 
